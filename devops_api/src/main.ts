@@ -11,8 +11,8 @@ async function bootstrap() {
 
   // 接口文档 swagger 参数
   const options = new DocumentBuilder()
-    .setTitle('R & D management system')
-    .setDescription('R & D management system API 文档')
+    .setTitle('Devops API')
+    .setDescription('Devops API 文档')
     .setVersion('0.0.0')
     .addBearerAuth()
     .build();
