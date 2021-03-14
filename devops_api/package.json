@@ -34,7 +34,10 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.25",
+    "dayjs": "^1.10.4",
+    "log4js": "^6.3.0",
+    "stacktrace-js": "^2.0.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.5.1",
