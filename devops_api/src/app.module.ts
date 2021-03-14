@@ -3,8 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import appConfig from './config/index';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TestModule } from './modules/test/test.module';
-import { StudentsModule } from './modules/students/students.module';
+import { UserModule } from './modules/user/user.module';
+
 @Module({
   imports: [
     // 配置模块
@@ -18,8 +18,7 @@ import { StudentsModule } from './modules/students/students.module';
       useFactory: (config: ConfigService) => config.get('database'),
       inject: [ConfigService],
     }),
-    TestModule,
-    StudentsModule
+    UserModule,
   ],
 })
 export class ApplicationModule {}
