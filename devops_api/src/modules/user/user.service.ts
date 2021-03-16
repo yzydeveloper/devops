@@ -1,11 +1,9 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { UserEntity } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 
-@Injectable()
 export class UserService {
   constructor(
     @InjectRepository(UserEntity)
@@ -17,17 +15,14 @@ export class UserService {
   }
 
   async create(dto: CreateUserDto): Promise<any> {
-    // 检查用户名是否存在
-    const existing = await this.findOneByAccount(dto.phoneNum);
-    if (existing) throw new HttpException('账号已存在', HttpStatus.BAD_REQUEST);
+    // 检查用户是否存在
+    const isHave = await this.findOneByAccount(dto.phoneNum);
+    if (isHave) return { code: 1, message: '此用户已存在', data: null };
     // 判断密码是否相等
     if (dto.password !== dto.confirmPassword)
-      throw new HttpException(
-        '两次输入密码不一致，请重试',
-        HttpStatus.BAD_REQUEST,
-      );
+      return { code: 1, message: '两次输入密码不一致，请重试', data: null };
     // 通过验证， 插入数据
     const result = await this.userRepository.save(dto);
-    return { statusCode: 0, message: '注册成功', data: result };
+    return { code: 0, message: '注册成功', data: result };
   }
 }
