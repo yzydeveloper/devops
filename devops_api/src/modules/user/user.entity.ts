@@ -3,20 +3,23 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('user')
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
-  userId: string;
+  public userId: string;
 
   @Column({ nullable: true, length: 20, comment: '用户手机号码' })
-  phoneNum: string;
+  public phoneNum: string;
 
   @Column({ nullable: true, length: 32, comment: '用户显示昵称' })
-  nickName: string;
+  public nickName: string;
 
   @Column({ default: '88888' })
-  password: string;
+  public password: string;
 
-  avatar: string;
+  public avatar: string;
 
-  role: string;
+  public role: string;
+
+  @Column({ default: false, comment: '是否禁用' })
+  public isDisable: boolean;
 
   @Column({ type: 'double', default: new Date().valueOf() })
   createTime: number;
