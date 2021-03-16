@@ -23,6 +23,11 @@ export class UserService {
     return await this.userRepository.findOne({ phoneNum });
   }
 
+  // 根据用户userId查询用户信息, 只查用户表，
+  async findOneById(userId: string): Promise<UserEntity> {
+    return await this.userRepository.findOne(userId);
+  }
+
   async create(dto: CreateUserDto): Promise<any> {
     // 检查用户是否存在
     const isHave = await this.findOneByphoneNum(dto.phoneNum);
@@ -56,7 +61,7 @@ export class UserService {
   }): Promise<Record<string, unknown>> {
     const accessToken = `Bearer ${this.jwtService.sign(payload)}`;
     const refreshToken = this.jwtService.sign(payload, {
-      expiresIn: this.config.get('JWT.expiresIn'),
+      expiresIn: this.config.get('JWT.refreshExpiresIn'),
     });
     return { accessToken, refreshToken };
   }
@@ -65,12 +70,12 @@ export class UserService {
     return this.createToken({ userId });
   }
 
-  async verifyToken(token: string): Promise<number> {
+  async verifyToken(token: string): Promise<string> {
     try {
-      const { id } = this.jwtService.verify(token);
-      return id;
+      const { userId } = this.jwtService.verify(token);
+      return userId;
     } catch (error) {
-      return 0;
+      return '';
     }
   }
 }
