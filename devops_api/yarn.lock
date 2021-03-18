@@ -637,7 +637,7 @@
   resolved "https://registry.npm.taobao.org/@nestjs/mapped-types/download/@nestjs/mapped-types-0.4.0.tgz#352b9a661d6d36863cf48b2057616cef1b2c802d"
   integrity sha1-NSuaZh1tNoY89IsgV2Fs7xssgC0=
 
-"@nestjs/passport@^7.1.5":
+"@nestjs/passport@^7.1.0":
   version "7.1.5"
   resolved "https://registry.npm.taobao.org/@nestjs/passport/download/@nestjs/passport-7.1.5.tgz#b32fc0492008d73ebae4327fbc0012a738a83664"
   integrity sha1-sy/ASSAI1z665DJ/vAASpzioNmQ=
