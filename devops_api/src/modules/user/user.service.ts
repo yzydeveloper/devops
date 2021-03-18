@@ -60,9 +60,7 @@ export class UserService {
     userId: string;
   }): Promise<Record<string, unknown>> {
     const accessToken = `Bearer ${this.jwtService.sign(payload)}`;
-    const refreshToken = this.jwtService.sign(payload, {
-      expiresIn: this.config.get('JWT.refreshExpiresIn'),
-    });
+    const refreshToken = this.jwtService.sign(payload);
     return { accessToken, refreshToken };
   }
 
