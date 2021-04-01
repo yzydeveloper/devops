@@ -16,7 +16,7 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>,
     private readonly cryptoUtil: CryptoUtil,
     private readonly jwtService: JwtService,
-    private readonly config: ConfigService,
+    // private readonly config: ConfigService,
   ) {}
   // 根据用户名查询用户信息
   async findOneByphoneNum(phoneNum: string): Promise<UserEntity> {
