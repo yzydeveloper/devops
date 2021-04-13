@@ -7,8 +7,16 @@ export class BuildGatway {
   server: Server;
 
   // socket连接钩子
-  async handleConnection(client: Socket): Promise<string> {
-    console.log('client', client);
-    return '连接成功';
+
+  afterInit(server: any): any {
+    console.log('init');
+  }
+
+  handleConnection(client: Socket): any {
+    console.log(`connected---${client}`);
+  }
+
+  handleDisconnect(client: Socket): any {
+    console.log(`disconnect---${client}`);
   }
 }
