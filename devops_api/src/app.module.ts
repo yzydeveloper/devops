@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 import appConfig from './config/index';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
-
+import { BuildModule } from './modules/buildservice/build.module';
 @Module({
   imports: [
     // 配置模块
@@ -19,6 +19,7 @@ import { UserModule } from './modules/user/user.module';
       inject: [ConfigService],
     }),
     UserModule,
+    BuildModule,
   ],
 })
 export class ApplicationModule {}
