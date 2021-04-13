@@ -1,10 +1,4 @@
-import {
-  MessageBody,
-  SubscribeMessage,
-  WebSocketGateway,
-  WebSocketServer,
-  ConnectedSocket,
-} from '@nestjs/websockets';
+import { WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway()
@@ -14,7 +8,7 @@ export class BuildGatway {
 
   // socket连接钩子
   async handleConnection(client: Socket): Promise<string> {
-    console.log(client);
+    console.log('client', client);
     return '连接成功';
   }
 }
